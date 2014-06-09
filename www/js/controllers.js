@@ -1,4 +1,6 @@
-angular.module('starter.controllers', [])
+var map;
+
+angular.module('starter.controllers', ['yaMap'])
 
 .controller('AppCtrl', function($scope) {
 })
@@ -16,4 +18,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+})
+
+.controller('MapController', function ($http, $scope) {
+
+    $scope.geoObjects = [];
+
+    $scope.afterMapInit = function (_map) {
+        map = _map;
+    };
 })
