@@ -74,6 +74,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                         controller: 'PlaylistCtrl'
                     }
                 }
+            })
+
+            .state("app.event", {
+                url: "/events",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/event-form.html",
+                        controller: 'EventsController'
+                    }
+                }
             });
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/map');

@@ -1,0 +1,39 @@
+<ion-view title="Playlist">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+        <div style="overflow: hidden">
+            <form name="eventForm" class="event-form" ng-controller="EventsController" ng-submit="addEvent(event)">
+                <div class="">
+                    <label>Sport</label>
+                    <select ng-options="sport.title for sport in sports"
+                            ng-model="event.sport" title="sport" required></select>
+                </div>
+                <div>
+                    <label>Address</label>
+                    <input type="text" ng-model="event.address" required/>
+                </div>
+                <div>
+                    <label>Capacity</label>
+                    <input type="number" ng-model="event.capacity" required/>
+                </div>
+                <div>
+                    <label>Date</label>
+                    <input type="date" ng-model="event.date" required/>
+                </div>
+                <div>
+                    <label>Time</label>
+                    <input type="time" ng-model="event.time" required/>
+                </div>
+                <div>
+                    <textarea class="event-description-area" ng-model="event.description"
+                              placeholder="Write a short description of the event..."></textarea>
+                </div>
+                <div>
+                    <input type="submit" value="Submit"/>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>
