@@ -1,4 +1,6 @@
-angular.module('starter.controllers', [])
+var map;
+
+angular.module('starter.controllers', ['yaMap'])
 
 .controller('AppCtrl', function($scope) {
 })
@@ -10,9 +12,19 @@ angular.module('starter.controllers', [])
     { title: 'Dubstep', id: 3 },
     { title: 'Indie', id: 4 },
     { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+    { title: 'Cowbell', id: 6 },
+    { title: 'Funk', id: 7 }
   ];
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+})
+
+.controller('MapController', function ($http, $scope) {
+
+    $scope.geoObjects = [];
+
+    $scope.afterMapInit = function (_map) {
+        map = _map;
+    };
 })
