@@ -1,5 +1,3 @@
-
-
 angular.module('starter.controllers', ['yaMap'])
 
     .controller('AppCtrl', function ($scope) {
@@ -22,8 +20,19 @@ angular.module('starter.controllers', ['yaMap'])
 
     .controller('MapController', function ($http, $scope) {
 
+        $scope.geoObjects = {
+            geometry: {
+                type: 'Circle',
+                coordinates: [37.60, 55.76],
+                radius: 10000
+            },
+            properties: {
+                balloonContent: "Радиус круга - 10 км",
+                hintContent: "Подвинь меня"
+            }
+        };
+
         var map;
-        $scope.geoObjects = [];
 
         $scope.afterMapInit = function (_map) {
             map = _map;

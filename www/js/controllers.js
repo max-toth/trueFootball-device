@@ -1,5 +1,3 @@
-
-
 angular.module('starter.controllers', ['yaMap'])
 
     .controller('AppCtrl', function ($scope) {
@@ -22,12 +20,56 @@ angular.module('starter.controllers', ['yaMap'])
 
     .controller('MapController', function ($http, $scope) {
 
+        $scope.geoObjects = [
+            {
+                geometry: {
+                    type: "Point",
+                    coordinates: [30.270, 59.956]
+                },
+                // Свойства.
+                properties: {
+                    // Контент метки.
+                    iconContent: 'Я тащусь',
+                    hintContent: 'Ну давай уже тащи'
+                }
+            },
+            {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [30.275, 59.950]
+                },
+                properties: {
+                    balloonContent: "Радиус круга - 10 км",
+                    hintContent: "Подвинь меня"
+                }
+            }
+        ];
+
         var map;
-        $scope.geoObjects = [];
 
         $scope.afterMapInit = function (_map) {
             map = _map;
-        };
+            jQuery.getJSON('/events').success(function (data) {
+                jQuery.each(data.events, function (index, event) {
+//                $scope.geoObjects.push(new ymaps.Placemark([event.y, event.x], {
+//                    balloonContentHeader: sports[event.sport - 1].title,
+//                    balloonContentBody: event.description
+//                }));
+                    console.log(event);
+
+                    $scope.geoObjects.push({
+                        geometry: {
+                            type: "Point",
+                            coordinates: [30.260, 59.940]
+                        },
+                        properties: {
+                            iconContent: 'Я тащусь',
+                            hintContent: 'Ну давай уже тащи'
+                        }
+                    });
+                });
+            });
+        }
     })
 
     .controller('EventsController', function ($http, $scope) {
