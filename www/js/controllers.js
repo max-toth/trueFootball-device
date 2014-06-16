@@ -21,26 +21,23 @@ angular.module('starter.controllers', ['yaMap'])
     })
 
     .controller('MapController', function ($http, $scope, Config, geoObjects, Sports) {
-
-        geoObjects = [];
-
-        $scope.afterMapInit = function (_map) {
-            map = _map;
-            $http.get(Config.apiUrl + '/events').success(function (data) {
-                angular.forEach(data.events, function (event, index) {
-                    geoObjects.push({
-                        geometry: {
-                            type: "Point",
-                            coordinates: [event.y, event.x]
-                        },
-                        properties: {
-                            iconContent: Sports[event.sport - 1].title,
-                            hintContent: event.description
-                        }
-                    });
+        $http.get(Config.apiUrl + '/events').success(function (data) {
+            angular.forEach(data.events, function (event, index) {
+                console.log(event);
+                geoObjects.push({
+                    geometry: {
+                        type: "Point",
+                        coordinates: [Number(event.x), Number(event.y)]
+                    },
+                    properties: {
+                        iconContent: Sports[event.sport - 1].title,
+                        hintContent: ''
+                    }
                 });
             });
-        }
+            console.log(geoObjects);
+        });
+        $scope.geoObjects = geoObjects;
     })
 
     .controller('EventsController', function ($http, $scope, geoObjects, Sports, Config) {
@@ -57,7 +54,7 @@ angular.module('starter.controllers', ['yaMap'])
         $scope.event = {};
 
         $scope.addEvent = function (event) {
-            console.log(event);
+//            console.log(event);
             event.position = {x: 0, y: 0};
 
             $http.get('http://geocode-maps.yandex.ru/1.x/?format=json&results=1&geocode=Россия,Санкт-Петербург,' + event.address).success(function (geoAddress) {
@@ -69,13 +66,14 @@ angular.module('starter.controllers', ['yaMap'])
 //                    balloonContentBody: event.description
 //                }));
 
+//                console.log(geoObjects);
                 geoObjects.push({
                     geometry: {
                         type: "Point",
                         coordinates: [event.y, event.x]
                     },
                     properties: {
-                        iconContent: Sports[event.sport - 1].title,
+                        iconContent: event.sport.title,
                         hintContent: event.description
                     }
                 });

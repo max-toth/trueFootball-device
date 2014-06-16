@@ -25,21 +25,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         apiUrl: 'http://localhost:3000'
     })
 
-    .value('geoObjects', function () {
-        return [];
-    })
+    .value('geoObjects', [{
+        geometry: {
+            type: "Point",
+            coordinates: [30.270, 59.956]
+        },
+        properties: {
+            iconContent: 'Футбол',
+            hintContent: 'игра'
+        }
+    }])
 
-    .value('Sports', function () {
-        return [
-            {title: 'Soccer', value: 1},
-            {title: 'Hockey', value: 2},
-            {title: 'Basketball', value: 3},
-            {title: 'Bikes', value: 4},
-            {title: 'Break dance', value: 5},
-            {title: 'Boarding', value: 6},
-            {title: 'Volleyball', value: 7}
-        ];
-    })
+    .value('Sports', [
+        {title: 'Soccer', value: 1},
+        {title: 'Hockey', value: 2},
+        {title: 'Basketball', value: 3},
+        {title: 'Bikes', value: 4},
+        {title: 'Break dance', value: 5},
+        {title: 'Boarding', value: 6},
+        {title: 'Volleyball', value: 7}
+    ])
 
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
