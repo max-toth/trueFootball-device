@@ -1,3 +1,5 @@
+var map;
+
 angular.module('starter.controllers', ['yaMap'])
 
     .controller('AppCtrl', function ($scope) {
@@ -18,53 +20,22 @@ angular.module('starter.controllers', ['yaMap'])
     .controller('PlaylistCtrl', function ($scope, $stateParams) {
     })
 
-    .controller('MapController', function ($http, $scope) {
+    .controller('MapController', function ($http, $scope, Config, geoObjects, Sports) {
 
-        $scope.geoObjects = [
-            {
-                geometry: {
-                    type: "Point",
-                    coordinates: [30.270, 59.956]
-                },
-                // Свойства.
-                properties: {
-                    // Контент метки.
-                    iconContent: 'Я тащусь',
-                    hintContent: 'Ну давай уже тащи'
-                }
-            },
-            {
-                geometry: {
-                    type: 'Point',
-                    coordinates: [30.275, 59.950]
-                },
-                properties: {
-                    balloonContent: "Радиус круга - 10 км",
-                    hintContent: "Подвинь меня"
-                }
-            }
-        ];
-
-        var map;
+        geoObjects = [];
 
         $scope.afterMapInit = function (_map) {
             map = _map;
-            jQuery.getJSON('/events').success(function (data) {
-                jQuery.each(data.events, function (index, event) {
-//                $scope.geoObjects.push(new ymaps.Placemark([event.y, event.x], {
-//                    balloonContentHeader: sports[event.sport - 1].title,
-//                    balloonContentBody: event.description
-//                }));
-                    console.log(event);
-
-                    $scope.geoObjects.push({
+            $http.get(Config.apiUrl + '/events').success(function (data) {
+                angular.forEach(data.events, function (event, index) {
+                    geoObjects.push({
                         geometry: {
                             type: "Point",
-                            coordinates: [30.260, 59.940]
+                            coordinates: [event.y, event.x]
                         },
                         properties: {
-                            iconContent: 'Я тащусь',
-                            hintContent: 'Ну давай уже тащи'
+                            iconContent: Sports[event.sport - 1].title,
+                            hintContent: event.description
                         }
                     });
                 });
@@ -72,7 +43,7 @@ angular.module('starter.controllers', ['yaMap'])
         }
     })
 
-    .controller('EventsController', function ($http, $scope) {
+    .controller('EventsController', function ($http, $scope, geoObjects, Sports, Config) {
         $scope.sports = [
             {title: 'Soccer', value: 1},
             {title: 'Hockey', value: 2},
@@ -86,19 +57,31 @@ angular.module('starter.controllers', ['yaMap'])
         $scope.event = {};
 
         $scope.addEvent = function (event) {
+            console.log(event);
             event.position = {x: 0, y: 0};
 
             $http.get('http://geocode-maps.yandex.ru/1.x/?format=json&results=1&geocode=Россия,Санкт-Петербург,' + event.address).success(function (geoAddress) {
                 var point = geoAddress.response.GeoObjectCollection.featureMember[0].GeoObject.Point;
                 var pos = point.pos.split(' ');
                 event.position = {x: Number(pos[0]), y: Number(pos[1])};
-                map.geoObjects.add(new ymaps.Placemark([event.position.y, event.position.x], {
-                    balloonContentHeader: event.sport.title,
-                    balloonContentBody: event.description
-                }));
+//                geoObjects.add(new ymaps.Placemark([event.position.y, event.position.x], {
+//                    balloonContentHeader: event.sport.title,
+//                    balloonContentBody: event.description
+//                }));
+
+                geoObjects.push({
+                    geometry: {
+                        type: "Point",
+                        coordinates: [event.y, event.x]
+                    },
+                    properties: {
+                        iconContent: Sports[event.sport - 1].title,
+                        hintContent: event.description
+                    }
+                });
 
                 var data = {event: event};
-                $http.post('/events', data);
+                $http.post(Config.apiUrl + '/events', data);
             });
         }
     })

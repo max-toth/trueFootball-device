@@ -4,6 +4,19 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+var config = {
+    developer: {
+        host: "127.0.0.1",
+        port: "3000",
+        url: "http://" + this.developer.host + ":"+ this.developer.port
+    },
+    production: {
+        host: "127.0.0.1",
+        port: "3000",
+        url: "http://" + this.production.host + ":"+ this.production.port
+    }
+};
+
 angular.module('starter', ['ionic', 'starter.controllers'])
 
     .run(function ($ionicPlatform) {

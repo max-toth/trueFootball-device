@@ -3,35 +3,29 @@
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
     <ion-content class="has-header">
-        <form name="eventForm" class="event-form" ng-controller="EventsController" ng-submit="addEvent(event)">
+        <form name="eventForm" class="event-form" ng-submit="addEvent(event)">
             <div class="list">
                 <label class="item item-input">
                     <span class="input-label">Sport</span>
                     <select ng-options="sport.title for sport in sports"
                             ng-model="event.sport" title="sport" required></select>
                 </label>
-
-
                 <label class="item item-input">
                     <span class="input-label">Address</span>
                     <input type="text" ng-model="event.address" required/>
                 </label>
-
                 <label class="item item-input">
                     <span class="input-label">Capacity</span>
                     <input type="number" ng-model="event.capacity" required/>
                 </label>
-
                 <label class="item item-input">
                     <span class="input-label">Date</span>
                     <input type="date" ng-model="event.date" required/>
                 </label>
-
                 <label class="item item-input">
                     <span class="input-label">Time</span>
                     <input type="time" ng-model="event.time" required/>
                 </label>
-
                 <label class="item item-input">
                     <span class="input-label">Description</span>
                     <textarea class="event-description-area" ng-model="event.description"
@@ -39,7 +33,7 @@
                 </label>
             </div>
             <div class="padding">
-                <buttton class="button button-block button-positive">Submit</buttton>
+                <button class="button button-block button-positive" type="submit">Submit</button>
             </div>
         </form>
     </ion-content>

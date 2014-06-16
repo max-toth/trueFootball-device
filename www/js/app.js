@@ -4,6 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+
 angular.module('starter', ['ionic', 'starter.controllers'])
 
     .run(function ($ionicPlatform) {
@@ -18,6 +19,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 StatusBar.styleDefault();
             }
         });
+    })
+
+    .value('Config', {
+        apiUrl: 'http://localhost:3000'
+    })
+
+    .value('geoObjects', function () {
+        return [];
+    })
+
+    .value('Sports', function () {
+        return [
+            {title: 'Soccer', value: 1},
+            {title: 'Hockey', value: 2},
+            {title: 'Basketball', value: 3},
+            {title: 'Bikes', value: 4},
+            {title: 'Break dance', value: 5},
+            {title: 'Boarding', value: 6},
+            {title: 'Volleyball', value: 7}
+        ];
     })
 
     .config(function ($stateProvider, $urlRouterProvider) {

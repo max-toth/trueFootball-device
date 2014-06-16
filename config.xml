@@ -1,11 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionicframework.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
+    <name>SportsSeeker</name>
     <description>
-        An Ionic Framework and Cordova project.
+        Sport event finder
     </description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+    <author email="maxim.v.tolstyh@gmail.com" href="http://truefootball.ru/">
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -18,7 +17,6 @@
          to be sent to iCloud. Note: enabling this could result in Apple rejecting your app.
     -->
     <preference name="BackupWebStorage" value="none" />
-
     <feature name="StatusBar">
       <param name="ios-package" value="CDVStatusBar" onload="true" />
     </feature>
