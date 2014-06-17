@@ -28,6 +28,10 @@ $bar-stable-text: lighten($stable, 45%);
 $bar-stable-border: darken($stable, 15%);
 
 
+/** Menu **/
+$menu-bg: #34495E;
+
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
@@ -51,6 +55,41 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	&.bar-stable {
 		box-shadow: inset 0 -1px 0 0 lighten($stable, 15%),
 					0 0 2px 0 darken($stable, 10%);
+	}
+}
+
+
+/** Menu **/
+$menu-bar-bg: darken($menu-bg, 5%);
+$menu-bar-border: darken($menu-bar-bg, 15%);
+
+.menu {
+	// Header
+	.bar-header {
+		@include bar-style($menu-bar-bg, $menu-bar-border, $bar-stable-text);
+		box-shadow: inset 0 -1px 0 0 lighten($menu-bar-bg, 15%),
+					0 0 2px 0 darken($menu-bar-bg, 10%);
+	}
+
+	// Menu items
+	.item {
+		@include item-style(transparent, lighten($menu-bg, 8%), $item-default-text);
+	}
+
+	.item-content {
+		color: $light;
+		background: $menu-bg;
+
+		&.active,
+		&.activated {
+			color: darken($light, 15%);
+			background: darken($menu-bg, 5%);
+		}
+
+		.icon {
+			display: inline-block;
+			min-width: 1em;
+		}
 	}
 }
 

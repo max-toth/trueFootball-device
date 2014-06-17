@@ -5,7 +5,7 @@
     <ion-content class="has-header">
         <form name="eventForm" class="event-form" ng-submit="addEvent(event)">
             <div class="list">
-                <label class="item item-input">
+                <label class="item item-input item-select">
                     <span class="input-label">Sport</span>
                     <select ng-options="sport.title for sport in sports"
                             ng-model="event.sport" title="sport" required></select>
