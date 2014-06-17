@@ -15,9 +15,54 @@ $royal:                           #8a6de9 !default;
 $dark:                            #444 !default;
 */
 
+
+
+/*** APP COLORS ***/
+$stable: #2ECC71;
+$positive: #3498DB;
+$dark: #323A45;
+
+
+/** Header **/
+$bar-stable-text: lighten($stable, 45%);
+$bar-stable-border: darken($stable, 15%);
+
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+
+
+/*** APP SPECIFIC STYLES  ***/
+
+/** Header **/
+.bar-header {
+	// Inner elements
+	.title {
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		cursor: default;
+	}
+
+	// Color theme
+	&.bar-stable {
+		box-shadow: inset 0 -1px 0 0 lighten($stable, 15%),
+					0 0 2px 0 darken($stable, 10%);
+	}
+}
+
+
+
+/*** APP MODULES ***/
+
+/*** Map ***/
+.map {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
