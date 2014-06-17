@@ -1,5 +1,3 @@
-var map;
-
 angular.module('starter.controllers', ['yaMap'])
 
     .controller('AppCtrl', function ($scope) {
@@ -27,7 +25,7 @@ angular.module('starter.controllers', ['yaMap'])
                 geoObjects.push({
                     geometry: {
                         type: "Point",
-                        coordinates: [event.y, event.x]
+                        coordinates: [Number(event.x), Number(event.y)]
                     },
                     properties: {
                         iconContent: Sports[event.sport - 1].title,
@@ -37,6 +35,7 @@ angular.module('starter.controllers', ['yaMap'])
             });
             console.log(geoObjects);
         });
+        $scope.geoObjects = geoObjects;
     })
 
     .controller('EventsController', function ($http, $scope, geoObjects, Sports, Config) {
