@@ -123,6 +123,11 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 	bottom: 0;
 }
 
+/** Map height on window resize fix **/
+.scroll {
+  height: 100%;
+}
+
 
 /** Event form **/
 .event-form {
