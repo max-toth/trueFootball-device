@@ -23,6 +23,10 @@ $positive: $stable;
 $dark: #323A45;
 
 
+/** Base bg **/
+$base-background-color: #616072;
+
+
 /** Forms **/
 $input-label-color: $stable;
 
@@ -32,7 +36,7 @@ $bar-stable-border: darken($stable, 15%);
 
 
 /** Menu **/
-$menu-bg: #616072;
+$menu-bg: $base-background-color;
 
 
 // The path for our ionicons font files, relative to the built CSS in www/css
