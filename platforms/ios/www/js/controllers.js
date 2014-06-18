@@ -1,3 +1,5 @@
+var map;
+
 angular.module('starter.controllers', ['yaMap'])
 
     .controller('AppCtrl', function ($scope) {
