@@ -32,7 +32,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         },
         properties: {
             iconContent: 'Футбол',
-            hintContent: 'игра'
+            hintContent: 'игра',
+            baloonContent: 'akjhvbakjbvljkbkjvsmdvlknskdv' +
+                'valsjkdnvlkjasdvn' +
+                'asldjkvnlkasjdv' +
+                'asdvkjslkdvjbsal'
         }
     }])
 

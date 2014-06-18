@@ -21,6 +21,11 @@ angular.module('starter.controllers', ['yaMap'])
     })
 
     .controller('MapController', function ($http, $scope, Config, geoObjects, Sports) {
+
+        $scope.afterMapInit = function (_map) {
+            map = _map;
+        };
+
         $http.get(Config.apiUrl + '/events').success(function (data) {
             angular.forEach(data.events, function (event, index) {
                 console.log(event);
@@ -42,13 +47,13 @@ angular.module('starter.controllers', ['yaMap'])
 
     .controller('EventsController', function ($http, $scope, geoObjects, Sports, Config) {
         $scope.sports = [
-            {title: 'Soccer', value: 1},
-            {title: 'Hockey', value: 2},
-            {title: 'Basketball', value: 3},
-            {title: 'Bikes', value: 4},
-            {title: 'Break dance', value: 5},
-            {title: 'Boarding', value: 6},
-            {title: 'Volleyball', value: 7}
+            {title: 'Футбол', value: 1},
+            {title: 'Хоккей', value: 2},
+            {title: 'Баскетбол', value: 3},
+            {title: 'Вело', value: 4},
+            {title: 'Брейк-данс', value: 5},
+            {title: 'Бординг', value: 6},
+            {title: 'Волейбол', value: 7}
         ];
 
         $scope.event = {};

@@ -25,16 +25,23 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         apiUrl: 'http://localhost:3000'
     })
 
-    .value('geoObjects', [{
-        geometry: {
-            type: "Point",
-            coordinates: [30.270, 59.956]
-        },
-        properties: {
-            iconContent: 'Футбол',
-            hintContent: 'игра'
+    .value('geoObjects', [
+        {
+            geometry: {
+                type: "Point",
+                coordinates: [30.270, 59.956]
+            },
+            properties: {
+                balloonContentHeader: '<span>Футбол</span>',
+                balloonContentBody: '<label style="item item-input">' +
+                    '<label class="input-label">Народу:</label><span>12</span>' +
+                    '<label class="input-label">Когда:</label><span>10.06.2014 12:30</span>' +
+                    '<label class="input-label" >Адрес:</label><span>Здоровцева 31</span>' +
+                    '<label class="input-label">На заметку:</label>' +
+                    ' </label>'
+            }
         }
-    }])
+    ])
 
     .value('Sports', [
         {title: 'Soccer', value: 1},
