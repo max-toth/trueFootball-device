@@ -50,9 +50,9 @@ angular.module('starter.controllers', ['yaMap'])
             {title: 'Футбол', value: 1},
             {title: 'Хоккей', value: 2},
             {title: 'Баскетбол', value: 3},
-            {title: 'Вело', value: 4},
+            {title: 'Bikes', value: 4},
             {title: 'Брейк-данс', value: 5},
-            {title: 'Бординг', value: 6},
+            {title: 'Boarding', value: 6},
             {title: 'Волейбол', value: 7}
         ];
 
