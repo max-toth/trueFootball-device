@@ -21,6 +21,31 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         });
     })
 
+    .service('DataService', function (Config, $q, $http) {
+        return {
+            get: function (key) {
+                var deferred = $q.defer();
+                if (key === 'uid') {
+                    var uid = localStorage.getItem(key);
+                    if (uid) {
+                        deferred.resolve(uid);
+                    } else {
+                        $http.get(Config.apiUrl + '/uid').success(function (data) {
+                            deferred.resolve(data.uid);
+                            localStorage.setItem('uid', data.uid);
+                        }).error(function (message) {
+                            console.log(message);
+                            deferred.reject(message);
+                        });
+                    }
+                } else {
+                    deferred.resolve(localStorage.getItem(key));
+                }
+                return deferred;
+            }
+        }
+    })
+
     .value('Config', {
         apiUrl: 'http://localhost:3000'
     })
