@@ -21,6 +21,31 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         });
     })
 
+    .service('DataService', function (Config, $q, $http) {
+        return {
+            get: function (key) {
+                var deferred = $q.defer();
+                if (key === 'uid') {
+                    var uid = localStorage.getItem(key);
+                    if (uid) {
+                        deferred.resolve(uid);
+                    } else {
+                        $http.get(Config.apiUrl + '/uid').success(function (data) {
+                            deferred.resolve(data.uid);
+                            localStorage.setItem('uid', data.uid);
+                        }).error(function (message) {
+                            console.log(message);
+                            deferred.reject(message);
+                        });
+                    }
+                } else {
+                    deferred.resolve(localStorage.getItem(key));
+                }
+                return deferred;
+            }
+        }
+    })
+
     .value('Config', {
         apiUrl: 'http://localhost:3000'
     })
@@ -32,14 +57,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 coordinates: [30.270, 59.956]
             },
             properties: {
-                balloonContentHeader: '<span>Футбол</span>',
-                balloonContentBody: '<div style="item item-input">' +
-                    '<label class="input-label">Народу:</label><span>12</span>' +
-                    '<label class="input-label">Когда:</label><span>10.06.2014 12:30</span>' +
-                    '<label class="input-label">Адрес:</label><span>Здоровцева 31</span>' +
-                    '<label class="input-label">На заметку:</label><span>Играем во дворе, берите бутсы и кеды</span>' +
-                    '<button>в игре</button>' +
-                    '</div>'
+//                balloonContentHeader: '<span>Футбол</span>',
+                balloonContentBody: [
+//                    '<div style="item item-input">',
+                    '<label class="input-label">Народу:</label><span>12</span>',
+                    '<label class="input-label">Когда:</label><span>10.06.2014 12:30</span>',
+                    '<label class="input-label">Адрес:</label><span>Здоровцева 31</span>',
+                    '<label class="input-label">На заметку:</label><span>Играем во дворе, берите бутсы и кеды</span>',
+                    '<button ng-click="join(123, 123)">в игре</button>'
+//                    '</div>'
+                ].join('')
             }
         }
     ])

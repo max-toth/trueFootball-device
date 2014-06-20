@@ -120,11 +120,14 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 
 /** Map **/
 .map {
+  width: 320px;
+  height: 320px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
+
 }
 
 /** Map height on window resize fix **/
