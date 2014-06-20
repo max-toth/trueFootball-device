@@ -3,6 +3,10 @@
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.0.0-beta.6",
-	"ionicons": "~1.5.2"
+    "ionicons": "~1.5.2",
+    "angular-yandex-map": "~1.0.7"
+  },
+  "resolutions": {
+    "angular": "~1.2.12"
   }
 }

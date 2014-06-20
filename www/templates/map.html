@@ -3,7 +3,7 @@
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
     <ion-content class="has-header">
-        <ya-map ya-zoom="10" class="map" ya-center="30.270,59.956" ya-after-init="afterMapInit($target)">
+        <ya-map ya-zoom="10" class="map" ya-center="30.270,59.956" ya-after-init="afterMapInit($target)" ya-options="{balloonPanelMaxMapArea: 'Infinity'}" ya-controls="">
             <ya-collection>
                 <ya-geo-object ng-repeat="go in geoObjects" ya-source="go" ya-options="{preset: 'islands#icon',iconColor: '#0095b6'}" class="geo-object"></ya-geo-object>
             </ya-collection>
