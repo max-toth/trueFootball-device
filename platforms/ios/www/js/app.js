@@ -57,15 +57,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 coordinates: [30.270, 59.956]
             },
             properties: {
-//                balloonContentHeader: '<span>Футбол</span>',
-                balloonContentBody: [
-//                    '<div style="item item-input">',
-                    '<label class="input-label">Народу:</label><span>12</span>',
+                balloonContentHeader: '<span>Футбол</span>',
+                balloonContent: [
+                    '<div style="item item-input">',
+                    '<address>',
+                    'Народу: 12',
                     '<label class="input-label">Когда:</label><span>10.06.2014 12:30</span>',
                     '<label class="input-label">Адрес:</label><span>Здоровцева 31</span>',
                     '<label class="input-label">На заметку:</label><span>Играем во дворе, берите бутсы и кеды</span>',
-                    '<button ng-click="join(123, 123)">в игре</button>'
-//                    '</div>'
+                    '<button ng-click="join(123, 123)">в игре</button>',
+                    '</address>',
+                    '</div>'
                 ].join('')
             }
         }

@@ -28,6 +28,38 @@ angular.module('starter.controllers', ['yaMap'])
             console.log(geoObjects);
         });
         $scope.geoObjects = geoObjects;
+
+        var counter=0;
+        $scope.overrides={
+            build: function () {
+                // Сначала вызываем метод build родительского класса.
+                console.log('build');
+                var BalloonContentLayout = templateLayoutFactory.get('templateOne');
+                BalloonContentLayout.superclass.build.call(this);
+                // А затем выполняем дополнительные действия.
+                angular.element(document.getElementById('counter-button')).bind('click', this.onCounterClick);
+                angular.element(document.getElementById('count')).html(counter);
+            },
+
+            // Аналогично переопределяем функцию clear, чтобы снять
+            // прослушивание клика при удалении макета с карты.
+            clear: function () {
+                // Выполняем действия в обратном порядке - сначала снимаем слушателя,
+                // а потом вызываем метод clear родительского класса.
+                angular.element(document.getElementById('counter-button')).unbind('click', this.onCounterClick);
+                var BalloonContentLayout = templateLayoutFactory.get('templateOne');
+                BalloonContentLayout.superclass.clear.call(this);
+            },
+
+            onCounterClick: function () {
+                angular.element(document.getElementById('count')).html(++counter);
+                if (counter == 5) {
+                    alert('Вы славно потрудились.');
+                    counter = 0;
+                    angular.element(document.getElementById('count')).html(counter);
+                }
+            }
+        };
     })
 
     .controller('EventsController', function ($http, $scope, geoObjects, Sports, Config) {

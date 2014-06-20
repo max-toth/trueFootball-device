@@ -34,9 +34,9 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                             deferred.resolve(data.uid);
                             localStorage.setItem('uid', data.uid);
                         }).error(function (message) {
-                                console.log(message);
-                                deferred.reject(message);
-                            });
+                            console.log(message);
+                            deferred.reject(message);
+                        });
                     }
                 } else {
                     deferred.resolve(localStorage.getItem(key));
@@ -58,17 +58,9 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             },
             properties: {
 //                balloonContentHeader: '<span>Футбол</span>',
-                balloonContentBody: [
-//                    '<div style="item item-input">',
-                    '<address>',
-                    'Народу: 12',
-//                    '<label class="input-label">Когда:</label><span>10.06.2014 12:30</span>',
-//                    '<label class="input-label">Адрес:</label><span>Здоровцева 31</span>',
-//                    '<label class="input-label">На заметку:</label><span>Играем во дворе, берите бутсы и кеды</span>',
-//                    '<button ng-click="join(123, 123)">в игре</button>',
-                    '</address>'
-//                    '</div>'
-                ].join('')
+                persons: 12,
+                address: 'Здоровцева 31',
+                post: 'Играем во дворе, берите бутсы и кеды'
             }
         }
     ])
