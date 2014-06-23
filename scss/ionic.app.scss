@@ -145,13 +145,17 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 
 /** Event info card **/
 .event-info {
-	padding: 20px 0;
+	padding: 20px 0 10px;
 }
 
 .event-info__line {
 	overflow: hidden;
 	padding: 5px 0;
 	font-size: 16px;
+
+	.button {
+		width: 90%;
+	}
 }
 
 .event-info__line-label {

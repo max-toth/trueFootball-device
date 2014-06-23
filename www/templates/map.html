@@ -4,21 +4,6 @@
     </ion-nav-buttons>
     <ion-content class="has-header">
         <ya-template-layout ya-key="templateOne" ya-overrides="overrides">
-            <!--<div class="item item-input">-->
-                <!--<address>-->
-                    <!--<label class="input-label">Народу:</label><span>$[properties.persons]</span>-->
-                    <!--<label class="input-label">Адрес:</label><span>$[properties.address]</span>-->
-                    <!--<label class="input-label">На заметку:</label><span>$[properties.post]</span>-->
-					<!--<div class="padding">-->
-						<!--<button class="button button-block button-positive"-->
-								<!--id="joinButton"-->
-								<!--ng-click="joinEventClick(1,2)">-->
-							<!--В игре-->
-						<!--</button>-->
-					<!--</div>-->
-                <!--</address>-->
-            <!--</div>-->
-
 			<div class="event-info">
 				<div class="event-info__line">
 					<div class="event-info__line-label">
@@ -28,7 +13,6 @@
 						$[properties.persons]
 					</div>
 				</div>
-
 				<div class="event-info__line">
 					<div class="event-info__line-label">
 						Адрес:
@@ -37,7 +21,6 @@
 						$[properties.address]
 					</div>
 				</div>
-
 				<div class="event-info__line event-info__line_note">
 					<div class="event-info__line-label">
 						На заметку:
@@ -45,6 +28,13 @@
 					<div class="event-info__line-value">
 						$[properties.post]
 					</div>
+				</div>
+				<div class="event-info__line">
+					<button class="button button-positive"
+							id="joinButton"
+							ng-click="joinEventClick(1,2)">
+						Я в игре
+					</button>
 				</div>
 			</div>
         </ya-template-layout>
