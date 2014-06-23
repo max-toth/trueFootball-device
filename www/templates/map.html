@@ -4,14 +4,49 @@
     </ion-nav-buttons>
     <ion-content class="has-header">
         <ya-template-layout ya-key="templateOne" ya-overrides="overrides">
-            <div class="item item-input">
-                <address>
-                    <label class="input-label">Народу:</label><span>$[properties.persons]</span>
-                    <label class="input-label">Адрес:</label><span>$[properties.address]</span>
-                    <label class="input-label">На заметку:</label><span>$[properties.post]</span>
-                    <button ng-click="joinEventClick(1,2)" id="joinButton">в игре</button>
-                </address>
-            </div>
+            <!--<div class="item item-input">-->
+                <!--<address>-->
+                    <!--<label class="input-label">Народу:</label><span>$[properties.persons]</span>-->
+                    <!--<label class="input-label">Адрес:</label><span>$[properties.address]</span>-->
+                    <!--<label class="input-label">На заметку:</label><span>$[properties.post]</span>-->
+					<!--<div class="padding">-->
+						<!--<button class="button button-block button-positive"-->
+								<!--id="joinButton"-->
+								<!--ng-click="joinEventClick(1,2)">-->
+							<!--В игре-->
+						<!--</button>-->
+					<!--</div>-->
+                <!--</address>-->
+            <!--</div>-->
+
+			<div class="event-info">
+				<div class="event-info__line">
+					<div class="event-info__line-label">
+						Народу:
+					</div>
+					<div class="event-info__line-value">
+						$[properties.persons]
+					</div>
+				</div>
+
+				<div class="event-info__line">
+					<div class="event-info__line-label">
+						Адрес:
+					</div>
+					<div class="event-info__line-value">
+						$[properties.address]
+					</div>
+				</div>
+
+				<div class="event-info__line event-info__line_note">
+					<div class="event-info__line-label">
+						На заметку:
+					</div>
+					<div class="event-info__line-value">
+						$[properties.post]
+					</div>
+				</div>
+			</div>
         </ya-template-layout>
         <ya-map ya-zoom="10" class="map" ya-center="30.270,59.956" ya-controls="">
             <ya-collection>

@@ -140,3 +140,30 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 		background: #F0F0F2;
 	}
 }
+
+
+
+/** Event info card **/
+.event-info {
+	padding: 20px 0;
+}
+
+.event-info__line {
+	overflow: hidden;
+	padding: 5px 0;
+	font-size: 16px;
+}
+
+.event-info__line-label {
+	float: left;
+	font-weight: 700;
+	width: 80px;
+	color: $dark;
+}
+
+.event-info__line_note {
+	.event-info__line-label {
+		float: none;
+		width: 100%;
+	}
+}
