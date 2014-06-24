@@ -182,3 +182,8 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 .ymaps-balloon__content {
 	background: $pane-bg !important;
 }
+
+// Hide copyright
+.ymaps-copyrights-pane {
+	display: none !important;
+}
