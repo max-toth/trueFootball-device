@@ -18,18 +18,21 @@ $dark:                            #444 !default;
 
 
 /*** APP COLORS ***/
-$stable: #4B4B58;
+$cl-grass: #548144;
+$cl-ground: #604C4B;
+
+$stable: $cl-grass;
 $positive: $stable;
-$dark: #323A45;
+$dark: #363636;
 
 
 /** Base bg **/
-$base-background-color: #616072;
+$base-background-color: $cl-ground;
 
 
 /** Forms **/
 $input-label-color: $stable;
-$form-item: #F0F0F2;
+$form-item: lighten($cl-grass, 58%);
 
 /** Header **/
 $bar-stable-text: lighten($stable, 50%);
@@ -41,7 +44,7 @@ $menu-bg: $base-background-color;
 
 
 /** Pane & balloon **/
-$pane-bg: lighten($base-background-color, 17%);
+$pane-bg: lighten($cl-grass, 45%);
 
 
 // The path for our ionicons font files, relative to the built CSS in www/css
@@ -141,6 +144,10 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 	.item {
 		background: $form-item;
 	}
+
+	.input-label {
+		color: darken($cl-grass, 12%);;
+	}
 }
 
 
@@ -155,7 +162,7 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 	padding: 5px 0;
 	font-weight: 700;
 	font-size: 16px;
-	color: #FFF;
+	color: $dark;
 
 	.button {
 		width: 90%;
@@ -165,7 +172,7 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 .event-info__line-label {
 	float: left;
 	width: 80px;
-	color: $dark;
+	color: darken($cl-grass, 12%);
 }
 
 .event-info__line_note {
@@ -178,9 +185,13 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 
 
 /** Yandex.Maps baloon style **/
+.ymaps-balloon {
+	border-top: 2px solid $cl-grass;
+}
+
 .ymaps-balloon,
 .ymaps-balloon__content {
-	background: $pane-bg !important;
+	background: $form-item !important;
 }
 
 // Hide copyright
