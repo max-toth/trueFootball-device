@@ -41,7 +41,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 } else {
                     deferred.resolve(localStorage.getItem(key));
                 }
-                return deferred;
+                return deferred.promise;
             }
         }
     })
@@ -58,6 +58,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             },
             properties: {
 //                balloonContentHeader: '<span>Футбол</span>',
+                id: 1234,
                 persons: 12,
                 address: 'Здоровцева 31',
                 post: 'Играем во дворе, берите бутсы и кеды'

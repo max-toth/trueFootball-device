@@ -8,7 +8,12 @@ angular.module('starter.controllers', ['yaMap'])
         };
     })
     .controller('MapController', function ($http, $scope, Config, geoObjects, Sports, DataService, templateLayoutFactory) {
-        DataService.get('uid');
+        var uid;
+
+        DataService.get('uid').then(function(data){
+            console.log('recieved uid ' + data);
+            uid = data;
+        });
         $scope.geoObjects = geoObjects;
 
         $http.get(Config.apiUrl + '/events').success(function (data) {
@@ -50,12 +55,17 @@ angular.module('starter.controllers', ['yaMap'])
                 var BalloonContentLayout = templateLayoutFactory.get('templateOne');
                 BalloonContentLayout.superclass.clear.call(this);
             },
-            joinEventClick: function (_uid, _event) {
+            joinEventClick: function () {
+                console.log();
                 var request = {
-                    uid: _uid,
-                    eventId: _event
+                    uid: uid,
+                    eventId: document.getElementById('joinButton').getAttribute('data-event-id')
                 };
                 console.log(request);
+
+                /**
+                 * POST http://backend.api/join
+                 */
             },
             onCounterClick: function () {
                 console.log(++counter);

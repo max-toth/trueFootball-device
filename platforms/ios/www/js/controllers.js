@@ -3,13 +3,13 @@ var map;
 angular.module('starter.controllers', ['yaMap'])
 
     .controller('AppCtrl', function ($scope) {
-    })
-    .controller('MapController', function ($http, $scope, Config, geoObjects, Sports, DataService) {
-        DataService.get('uid');
-
         $scope.afterMapInit = function (_map) {
             map = _map;
         };
+    })
+    .controller('MapController', function ($http, $scope, Config, geoObjects, Sports, DataService, templateLayoutFactory) {
+        DataService.get('uid');
+        $scope.geoObjects = geoObjects;
 
         $http.get(Config.apiUrl + '/events').success(function (data) {
             angular.forEach(data.events, function (event, index) {
@@ -27,18 +27,18 @@ angular.module('starter.controllers', ['yaMap'])
             });
             console.log(geoObjects);
         });
-        $scope.geoObjects = geoObjects;
 
-        var counter=0;
-        $scope.overrides={
+        var counter = 0;
+
+        $scope.overrides = {
             build: function () {
                 // Сначала вызываем метод build родительского класса.
                 console.log('build');
+                console.log(templateLayoutFactory);
                 var BalloonContentLayout = templateLayoutFactory.get('templateOne');
                 BalloonContentLayout.superclass.build.call(this);
-                // А затем выполняем дополнительные действия.
-                angular.element(document.getElementById('counter-button')).bind('click', this.onCounterClick);
-                angular.element(document.getElementById('count')).html(counter);
+//                А затем выполняем дополнительные действия.
+                angular.element(document.getElementById('joinButton')).bind('click', this.joinEventClick);
             },
 
             // Аналогично переопределяем функцию clear, чтобы снять
@@ -50,14 +50,15 @@ angular.module('starter.controllers', ['yaMap'])
                 var BalloonContentLayout = templateLayoutFactory.get('templateOne');
                 BalloonContentLayout.superclass.clear.call(this);
             },
-
+            joinEventClick: function (_uid, _event) {
+                var request = {
+                    uid: _uid,
+                    eventId: _event
+                };
+                console.log(request);
+            },
             onCounterClick: function () {
-                angular.element(document.getElementById('count')).html(++counter);
-                if (counter == 5) {
-                    alert('Вы славно потрудились.');
-                    counter = 0;
-                    angular.element(document.getElementById('count')).html(counter);
-                }
+                console.log(++counter);
             }
         };
     })
