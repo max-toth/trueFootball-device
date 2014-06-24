@@ -66,6 +66,7 @@ angular.module('starter.controllers', ['yaMap'])
                 /**
                  * POST http://backend.api/join
                  */
+                $http.post(Config.apiUrl + '/join', request);
             },
             onCounterClick: function () {
                 console.log(++counter);
