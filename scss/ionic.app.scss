@@ -29,6 +29,7 @@ $base-background-color: #616072;
 
 /** Forms **/
 $input-label-color: $stable;
+$form-item: #F0F0F2;
 
 /** Header **/
 $bar-stable-text: lighten($stable, 50%);
@@ -37,6 +38,10 @@ $bar-stable-border: darken($stable, 15%);
 
 /** Menu **/
 $menu-bg: $base-background-color;
+
+
+/** Pane & balloon **/
+$pane-bg: lighten($base-background-color, 17%);
 
 
 // The path for our ionicons font files, relative to the built CSS in www/css
@@ -110,7 +115,7 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 /** Content **/
 .menu-content {
 	.pane {
-		background: #8B8A9D;
+		background: $pane-bg;
 	}
 }
 
@@ -120,12 +125,9 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 
 /** Map **/
 .map {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 
 /** Map height on window resize fix **/
@@ -137,7 +139,7 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 /** Event form **/
 .event-form {
 	.item {
-		background: #F0F0F2;
+		background: $form-item;
 	}
 }
 
@@ -145,13 +147,15 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 
 /** Event info card **/
 .event-info {
-	padding: 20px 0 10px;
+	padding: 0 0 5px;
 }
 
 .event-info__line {
 	overflow: hidden;
 	padding: 5px 0;
+	font-weight: 700;
 	font-size: 16px;
+	color: #FFF;
 
 	.button {
 		width: 90%;
@@ -160,7 +164,6 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 
 .event-info__line-label {
 	float: left;
-	font-weight: 700;
 	width: 80px;
 	color: $dark;
 }
@@ -170,4 +173,12 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 		float: none;
 		width: 100%;
 	}
+}
+
+
+
+/** Yandex.Maps baloon style **/
+.ymaps-balloon,
+.ymaps-balloon__content {
+	background: $pane-bg !important;
 }
