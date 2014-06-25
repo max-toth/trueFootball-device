@@ -18,21 +18,26 @@ $dark:                            #444 !default;
 
 
 /*** APP COLORS ***/
-$stable: #4B4B58;
-$positive: $stable;
-$dark: #323A45;
+$cl-light-orange: #FAE6C9;
+$cl-vivid-orange: #DD4D0A;
+$cl-light-green: #B9DCCB;
+$cl-dark-blue: #37505F;
+
+$stable: $cl-light-orange;
+$positive: $cl-vivid-orange;
+$dark: #222;
 
 
 /** Base bg **/
-$base-background-color: #616072;
+$base-background-color: $cl-light-green;
 
 
 /** Forms **/
-$input-label-color: $stable;
-$form-item: #F0F0F2;
+$input-label-color: $cl-dark-blue;
+$form-item: lighten($cl-light-green, 30%);
 
 /** Header **/
-$bar-stable-text: lighten($stable, 50%);
+$bar-stable-text: darken($cl-vivid-orange, 5%);
 $bar-stable-border: darken($stable, 15%);
 
 
@@ -41,7 +46,7 @@ $menu-bg: $base-background-color;
 
 
 /** Pane & balloon **/
-$pane-bg: lighten($base-background-color, 17%);
+$pane-bg: lighten($base-background-color, 15%);
 
 
 // The path for our ionicons font files, relative to the built CSS in www/css
@@ -66,6 +71,7 @@ textarea {
 	.title {
 		letter-spacing: 1px;
 		text-transform: uppercase;
+		font-weight: 700;
 		cursor: default;
 	}
 
@@ -84,7 +90,7 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 .menu {
 	// Header
 	.bar-header {
-		@include bar-style($menu-bar-bg, $menu-bar-border, $bar-stable-text);
+		@include bar-style($menu-bar-bg, $menu-bar-border, $cl-dark-blue);
 		box-shadow: inset 0 -1px 0 0 lighten($menu-bar-bg, 10%),
 					0 0 2px 0 darken($menu-bar-bg, 10%);
 	}
@@ -95,12 +101,12 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 	}
 
 	.item-content {
-		color: $light;
+		color: $cl-dark-blue;
 		background: $menu-bg;
 
 		&.active,
 		&.activated {
-			color: darken($light, 15%);
+			color: darken($cl-dark-blue, 15%);
 			background: darken($menu-bg, 5%);
 		}
 
@@ -152,10 +158,9 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 
 .event-info__line {
 	overflow: hidden;
-	padding: 5px 0;
+	padding: 2px 0;
 	font-weight: 700;
 	font-size: 16px;
-	color: #FFF;
 
 	.button {
 		width: 90%;
@@ -165,7 +170,7 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 .event-info__line-label {
 	float: left;
 	width: 80px;
-	color: $dark;
+	color: $bar-stable-text;
 }
 
 .event-info__line_note {
@@ -175,12 +180,20 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 	}
 }
 
+.event-info__line_join {
+	margin-top: 5px;
+}
+
 
 
 /** Yandex.Maps baloon style **/
 .ymaps-balloon,
 .ymaps-balloon__content {
-	background: $pane-bg !important;
+	background: $stable !important;
+}
+
+.ymaps-balloon {
+	border-top: 2px solid $positive;
 }
 
 // Hide copyright
