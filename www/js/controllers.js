@@ -17,8 +17,7 @@ angular.module('starter.controllers', ['yaMap'])
         $scope.geoObjects = geoObjects;
 
         $http.get(Config.apiUrl + '/events').success(function (data) {
-            angular.forEach(data.events, function (event, index) {
-                console.log(event);
+            angular.forEach(data, function (event, index) {
                 geoObjects.push({
                     geometry: {
                         type: "Point",
@@ -26,11 +25,11 @@ angular.module('starter.controllers', ['yaMap'])
                     },
                     properties: {
                         iconContent: Sports[event.sport - 1].title,
-                        hintContent: ''
+                        hintContent: '',
+                        event: event
                     }
                 });
             });
-            console.log(geoObjects);
         });
 
         var counter = 0;
@@ -38,7 +37,6 @@ angular.module('starter.controllers', ['yaMap'])
         $scope.overrides = {
             build: function () {
                 // Сначала вызываем метод build родительского класса.
-                console.log('build');
                 console.log(templateLayoutFactory);
                 var BalloonContentLayout = templateLayoutFactory.get('templateOne');
                 BalloonContentLayout.superclass.build.call(this);

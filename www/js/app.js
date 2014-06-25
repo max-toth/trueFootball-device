@@ -51,7 +51,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
     .value('geoObjects', [
-        {
+        /*{
             geometry: {
                 type: "Point",
                 coordinates: [30.270, 59.956]
@@ -63,7 +63,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 address: 'Здоровцева 31',
                 post: 'Играем во дворе, берите бутсы и кеды'
             }
-        }
+        }*/
     ])
 
     .value('Sports', [

@@ -10,7 +10,7 @@
 						Народу:
 					</div>
 					<div class="event-info__line-value">
-						$[properties.persons]
+                        $[properties.event.count]/$[properties.event.capacity]
 					</div>
 				</div>
 				<div class="event-info__line">
@@ -18,7 +18,7 @@
 						Адрес:
 					</div>
 					<div class="event-info__line-value">
-						$[properties.address]
+						$[properties.event.address]
 					</div>
 				</div>
 				<div class="event-info__line event-info__line_note">
@@ -26,13 +26,13 @@
 						На заметку:
 					</div>
 					<div class="event-info__line-value">
-						$[properties.post]
+						$[properties.event.description]
 					</div>
 				</div>
 				<div class="event-info__line">
 					<button class="button button-positive"
 							id="joinButton"
-							ng-click="joinEventClick()" data-event-id="$[properties.id]">
+							ng-click="joinEventClick()" data-event-id="$[properties.event.id]">
 						Я в игре
 					</button>
 				</div>
