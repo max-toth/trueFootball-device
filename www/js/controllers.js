@@ -1,24 +1,29 @@
 var map;
 
 angular.module('starter.controllers', ['yaMap'])
-
     .controller('AppCtrl', function ($scope) {
         $scope.afterMapInit = function (_map) {
             map = _map;
         };
     })
-    .controller('MapController', function ($http, $scope, $ionicPopup, Config, geoObjects, Sports, DataService, templateLayoutFactory) {
+    .value('sharedData', { eventToOpen: null })
+    .controller('MapController', function (
+            $scope, $http, $timeout,
+            $ionicPopup,
+            templateLayoutFactory,
+            Config, Sports, DataService,
+            sharedData
+        ) {
         var uid;
 
         DataService.get('uid').then(function (data) {
-            console.log('recieved uid ' + data);
             uid = data;
         });
-        $scope.geoObjects = geoObjects;
+        $scope.geoObjects = [];
 
         $http.get(Config.apiUrl + '/events').success(function (data) {
-            angular.forEach(data, function (event, index) {
-                geoObjects.push({
+            angular.forEach(data, function (event) {
+                $scope.geoObjects.push({
                     geometry: {
                         type: "Point",
                         coordinates: [Number(event.x), Number(event.y)]
@@ -32,7 +37,16 @@ angular.module('starter.controllers', ['yaMap'])
             });
         });
 
-        var counter = 0;
+        $scope.maybeOpen = function(geoObject) {
+            if (!sharedData.eventToOpen) return;
+
+            if (geoObject.properties.get('event').id == sharedData.eventToOpen) {
+                sharedData.eventToOpen = null;
+                $timeout(function () {
+                    geoObject.balloon.open();
+                });
+            }
+        };
 
         $scope.overrides = {
             build: function () {
@@ -52,6 +66,7 @@ angular.module('starter.controllers', ['yaMap'])
                 var BalloonContentLayout = templateLayoutFactory.get('templateOne');
                 BalloonContentLayout.superclass.clear.call(this);
             },
+
             joinEventClick: function () {
                 var request = {
                     uid: uid,
@@ -71,35 +86,31 @@ angular.module('starter.controllers', ['yaMap'])
                             template: message
                         });
                     });
-            },
-            onCounterClick: function () {
-                console.log(++counter);
             }
         };
     })
 
-    .controller('EventsController', function ($http, $scope, $ionicPopup, geoObjects, Sports, Config) {
-        $scope.sports = [
-            {title: 'Футбол', value: 1},
-            {title: 'Хоккей', value: 2},
-            {title: 'Баскетбол', value: 3},
-            {title: 'Bikes', value: 4},
-            {title: 'Брейк-данс', value: 5},
-            {title: 'Boarding', value: 6},
-            {title: 'Волейбол', value: 7}
-        ];
+    .controller('EventsController', function (
+            $scope, $location, $http,
+            $ionicPopup, $ionicLoading,
+            Sports, Config,
+            sharedData
+        ) {
+        $scope.sports = Sports;
 
         $scope.event = {};
 
         $scope.addEvent = function (event) {
             event.position = { x: 0, y: 0 };
+            event.start = event.date + ' ' + event.time;
 
             $http.get('http://geocode-maps.yandex.ru/1.x/?format=json&results=1&geocode=Россия,Санкт-Петербург,' + event.address)
                 .success(function (geoAddress) {
                     var point = geoAddress.response.GeoObjectCollection.featureMember[0].GeoObject.Point;
                     var pos = point.pos.split(' ');
                     event.position = { x: Number(pos[0]), y: Number(pos[1]) };
-                    geoObjects.push({
+                    event.address = geoAddress.response.GeoObjectCollection.featureMember[0].name;
+                    /*geoObjects.push({
                         geometry: {
                             type: "Point",
                             coordinates: [event.y, event.x]
@@ -108,15 +119,25 @@ angular.module('starter.controllers', ['yaMap'])
                             iconContent: event.sport.title,
                             hintContent: event.description
                         }
-                    });
+                    });*/
 
                     var data = {event: event};
-                    $http.post(Config.apiUrl + '/events', data).error(function (message) {
-                        $ionicPopup.alert({
-                            title: 'Не удалось добавить событие',
-                            template: message
-                        });
+                    $ionicLoading.show({
+                        template: 'Пожалуйста, подождите...'
                     });
+
+                    $http.post(Config.apiUrl + '/events', data)
+                        .success(function (newEvent) {
+                            sharedData.eventToOpen = newEvent.id;
+                            $location.path('/app/map');
+                        })
+                        .error(function (message) {
+                            $ionicPopup.alert({
+                                title: 'Не удалось добавить событие',
+                                template: message
+                            });
+                        })
+                        .finally($ionicLoading.hide);
                 })
                 .error(function(message) {
                     $ionicPopup.alert({

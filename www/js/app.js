@@ -55,30 +55,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         apiUrl: 'http://localhost:3000'
     })
 
-    .value('geoObjects', [
-        /*{
-            geometry: {
-                type: "Point",
-                coordinates: [30.270, 59.956]
-            },
-            properties: {
-//                balloonContentHeader: '<span>Футбол</span>',
-                id: 1234,
-                persons: 12,
-                address: 'Здоровцева 31',
-                post: 'Играем во дворе, берите бутсы и кеды'
-            }
-        }*/
-    ])
-
-    .value('Sports', [
-        {title: 'Soccer', value: 1},
-        {title: 'Hockey', value: 2},
-        {title: 'Basketball', value: 3},
+    .constant('Sports', [
+        {title: 'Футбол', value: 1},
+        {title: 'Хоккей', value: 2},
+        {title: 'Баскетбол', value: 3},
         {title: 'Bikes', value: 4},
-        {title: 'Break dance', value: 5},
+        {title: 'Брейк-данс', value: 5},
         {title: 'Boarding', value: 6},
-        {title: 'Volleyball', value: 7}
+        {title: 'Волейбол', value: 7}
     ])
 
     .config(function ($stateProvider, $urlRouterProvider) {

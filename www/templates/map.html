@@ -42,6 +42,7 @@
             <ya-collection>
                 <ya-geo-object ng-repeat="go in geoObjects" ya-source="go"
                                ya-options="{preset: 'islands#icon',iconColor: '#0095b6', balloonContentLayout:'templateOne', balloonPanelMaxMapArea: 'Infinity'}"
+                               ya-after-init="maybeOpen($target)"
                                class="geo-object"></ya-geo-object>
             </ya-collection>
         </ya-map>
