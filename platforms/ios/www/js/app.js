@@ -8,16 +8,21 @@
 angular.module('starter', ['ionic', 'starter.controllers'])
 
     .run(function ($ionicPlatform) {
+
+        if (window.StatusBar) {
+                // org.apache.cordova.statusbar required
+                window.StatusBar.styleDefault();
+                window.StatusBar.overlaysWebView(false);
+                window.StatusBar.backgroundColorByHexString('#FAE6C9');
+            }       
+
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
-            if (window.StatusBar) {
-                // org.apache.cordova.statusbar required
-                StatusBar.styleDefault();
-            }
+            
         });
     })
 
@@ -41,7 +46,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 } else {
                     deferred.resolve(localStorage.getItem(key));
                 }
-                return deferred;
+                return deferred.promise;
             }
         }
     })
@@ -51,18 +56,19 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
     .value('geoObjects', [
-        {
+        /*{
             geometry: {
                 type: "Point",
                 coordinates: [30.270, 59.956]
             },
             properties: {
 //                balloonContentHeader: '<span>Футбол</span>',
+                id: 1234,
                 persons: 12,
                 address: 'Здоровцева 31',
                 post: 'Играем во дворе, берите бутсы и кеды'
             }
-        }
+        }*/
     ])
 
     .value('Sports', [
