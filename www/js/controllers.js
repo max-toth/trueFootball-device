@@ -56,17 +56,15 @@ angular.module('starter.controllers', ['yaMap'])
                 BalloonContentLayout.superclass.clear.call(this);
             },
             joinEventClick: function () {
-                console.log();
                 var request = {
                     uid: uid,
                     eventId: document.getElementById('joinButton').getAttribute('data-event-id')
                 };
-                console.log(request);
 
                 /**
                  * POST http://backend.api/join
                  */
-                $http.post(Config.apiUrl + '/join', request);
+                $http.post(Config.apiUrl + '/events/join', request);
             },
             onCounterClick: function () {
                 console.log(++counter);
