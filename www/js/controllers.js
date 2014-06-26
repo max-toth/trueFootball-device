@@ -78,7 +78,8 @@ angular.module('starter.controllers', ['yaMap'])
                  */
                 $http.post(Config.apiUrl + '/events/join', request)
                     .success(function (event) {
-                        document.getElementById('eventCapacity').innerText = event.count + ' / ' + event.capacity;
+                        if (document.getElementById('joinButton').getAttribute('data-event-id') == event.id)
+                            document.getElementById('eventCapacity').innerHTML = event.count + '/' + event.capacity;
                     })
                     .error(function (message) {
                         $ionicPopup.alert({
@@ -109,7 +110,6 @@ angular.module('starter.controllers', ['yaMap'])
                     var point = geoAddress.response.GeoObjectCollection.featureMember[0].GeoObject.Point;
                     var pos = point.pos.split(' ');
                     event.position = { x: Number(pos[0]), y: Number(pos[1]) };
-                    event.address = geoAddress.response.GeoObjectCollection.featureMember[0].name;
                     /*geoObjects.push({
                         geometry: {
                             type: "Point",
