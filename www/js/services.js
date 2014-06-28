@@ -20,6 +20,9 @@ angular.module('starter.services', [])
                     deferred.resolve(localStorage.getItem(key));
                 }
                 return deferred.promise;
+            },
+            set: function (key, value) {
+                localStorage.setItem(key, value);
             }
         }
     })
