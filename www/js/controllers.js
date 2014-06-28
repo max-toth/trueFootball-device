@@ -15,7 +15,6 @@ angular.module('starter.controllers', ['yaMap'])
             sharedData
         ) {
         var uid;
-
         DataService.get('uid').then(function (data) {
             uid = data;
         });
@@ -94,7 +93,7 @@ angular.module('starter.controllers', ['yaMap'])
     .controller('EventsController', function (
             $scope, $location, $http,
             $ionicPopup, $ionicLoading,
-            Sports, Config,
+            Sports, Config, DataService,
             sharedData
         ) {
         $scope.sports = Sports;
@@ -121,7 +120,11 @@ angular.module('starter.controllers', ['yaMap'])
                         }
                     });*/
 
-                    var data = {event: event};
+                    var _uid;
+                    DataService.get('uid').then(function (data) {
+                        _uid = data;
+                    });
+                    var data = {event: event, uid: _uid};
                     $ionicLoading.show({
                         template: 'Пожалуйста, подождите...'
                     });

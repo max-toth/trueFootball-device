@@ -30,8 +30,9 @@ if (root) {
     filesToReplace.forEach(function(filename) {
         var fullFilename = path.join(root, filename);
 
-        if (fs.existsSync(fullFilename)) {
-            setConfigProperty(fullFilename, 'apiUrl', 'http://truefootbal.ngrok.com');
+        if (fs.existsSync(fullFilename)) {        
+            // setConfigProperty(fullFilename, 'apiUrl', 'http://truefootbal.ngrok.com');
+            setConfigProperty(fullFilename, 'apiUrl', 'http://sport-seeker.herokuapp.com/');
         } else {
             console.log("missing: " + fullFilename);
         }

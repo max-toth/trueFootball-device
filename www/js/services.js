@@ -25,6 +25,7 @@ angular.module('starter.services', [])
     })
 
     .constant('Config', {
+        //apiUrl: 'http://sport-seeker.herokuapp.com'
         apiUrl: 'http://localhost:3000'
     })
 

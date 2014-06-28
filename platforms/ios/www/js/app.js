@@ -5,82 +5,22 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-angular.module('starter', ['ionic', 'starter.controllers'])
-
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     .run(function ($ionicPlatform) {
-
-        if (window.StatusBar) {
-                // org.apache.cordova.statusbar required
-                window.StatusBar.styleDefault();
-                window.StatusBar.overlaysWebView(false);
-                window.StatusBar.backgroundColorByHexString('#FAE6C9');
-            }       
-
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
-            
+            if (window.StatusBar) {
+                // org.apache.cordova.statusbar required
+                window.StatusBar.styleDefault();
+                // window.StatusBar.overlaysWebView(false);
+                // window.StatusBar.backgroundColorByHexString('#FAE6C9');
+            }           
         });
     })
-
-    .service('DataService', function (Config, $q, $http) {
-        return {
-            get: function (key) {
-                var deferred = $q.defer();
-                if (key === 'uid') {
-                    var uid = localStorage.getItem(key);
-                    if (uid) {
-                        deferred.resolve(uid);
-                    } else {
-                        $http.get(Config.apiUrl + '/uid').success(function (data) {
-                            deferred.resolve(data.uid);
-                            localStorage.setItem('uid', data.uid);
-                        }).error(function (message) {
-                            console.log(message);
-                            deferred.reject(message);
-                        });
-                    }
-                } else {
-                    deferred.resolve(localStorage.getItem(key));
-                }
-                return deferred.promise;
-            }
-        }
-    })
-
-    .value('Config', {
-        apiUrl: 'http://localhost:3000'
-    })
-
-    .value('geoObjects', [
-        /*{
-            geometry: {
-                type: "Point",
-                coordinates: [30.270, 59.956]
-            },
-            properties: {
-//                balloonContentHeader: '<span>Футбол</span>',
-                id: 1234,
-                persons: 12,
-                address: 'Здоровцева 31',
-                post: 'Играем во дворе, берите бутсы и кеды'
-            }
-        }*/
-    ])
-
-    .value('Sports', [
-        {title: 'Soccer', value: 1},
-        {title: 'Hockey', value: 2},
-        {title: 'Basketball', value: 3},
-        {title: 'Bikes', value: 4},
-        {title: 'Break dance', value: 5},
-        {title: 'Boarding', value: 6},
-        {title: 'Volleyball', value: 7}
-    ])
-
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
 
