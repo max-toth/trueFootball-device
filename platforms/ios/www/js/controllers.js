@@ -14,9 +14,9 @@ angular.module('starter.controllers', ['yaMap'])
             Config, Sports, DataService,
             sharedData
         ) {
-        var uid;
+        var _uid;
         DataService.get('uid').then(function (data) {
-            uid = data;
+            _uid = data;
         });
         $scope.geoObjects = [];
 
@@ -68,7 +68,7 @@ angular.module('starter.controllers', ['yaMap'])
 
             joinEventClick: function () {
                 var request = {
-                    uid: uid,
+                    uid: _uid,
                     eventId: document.getElementById('joinButton').getAttribute('data-event-id')
                 };
 
@@ -76,7 +76,14 @@ angular.module('starter.controllers', ['yaMap'])
                  * POST http://backend.api/join
                  */
                 $http.post(Config.apiUrl + '/events/join', request)
-                    .success(function (event) {
+                    .success(function (data) {
+                        if (data.uid != _uid) {
+                            DataService.set('uid', data.uid);
+                            _uid = data.uid;
+                        }
+
+                        var event = data.event;
+
                         if (document.getElementById('joinButton').getAttribute('data-event-id') == event.id)
                             document.getElementById('eventCapacity').innerHTML = event.count + '/' + event.capacity;
                     })
@@ -100,6 +107,11 @@ angular.module('starter.controllers', ['yaMap'])
 
         $scope.event = {};
 
+        var _uid;
+        DataService.get('uid').then(function (data) {
+            _uid = data;
+        });
+
         $scope.addEvent = function (event) {
             event.position = { x: 0, y: 0 };
             event.start = event.date + ' ' + event.time;
@@ -109,29 +121,20 @@ angular.module('starter.controllers', ['yaMap'])
                     var point = geoAddress.response.GeoObjectCollection.featureMember[0].GeoObject.Point;
                     var pos = point.pos.split(' ');
                     event.position = { x: Number(pos[0]), y: Number(pos[1]) };
-                    /*geoObjects.push({
-                        geometry: {
-                            type: "Point",
-                            coordinates: [event.y, event.x]
-                        },
-                        properties: {
-                            iconContent: event.sport.title,
-                            hintContent: event.description
-                        }
-                    });*/
 
-                    var _uid;
-                    DataService.get('uid').then(function (data) {
-                        _uid = data;
-                    });
-                    var data = {event: event, uid: _uid};
+                    var data = { event: event, uid: _uid };
+
                     $ionicLoading.show({
                         template: 'Пожалуйста, подождите...'
                     });
 
                     $http.post(Config.apiUrl + '/events', data)
-                        .success(function (newEvent) {
-                            sharedData.eventToOpen = newEvent.id;
+                        .success(function (response) {
+                            if (response.uid != _uid) {
+                                DataService.set('uid', response.uid);
+                                _uid = response.uid;
+                            }
+                            sharedData.eventToOpen = response.event.id;
                             $location.path('/app/map');
                         })
                         .error(function (message) {
