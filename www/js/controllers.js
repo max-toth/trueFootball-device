@@ -77,7 +77,10 @@ angular.module('starter.controllers', ['yaMap'])
                  */
                 $http.post(Config.apiUrl + '/events/join', request)
                     .success(function (data) {
-                        (data.uid == _uid) || DataService.set('uid', uid);
+                        if (data.uid != _uid) {
+                            DataService.set('uid', data.uid);
+                            _uid = data.uid;
+                        }
 
                         var event = data.event;
 
@@ -127,7 +130,10 @@ angular.module('starter.controllers', ['yaMap'])
 
                     $http.post(Config.apiUrl + '/events', data)
                         .success(function (response) {
-                            (response.uid == _uid) || DataService.set('uid', response.uid);
+                            if (response.uid != _uid) {
+                                DataService.set('uid', response.uid);
+                                _uid = response.uid;
+                            }
                             sharedData.eventToOpen = response.event.id;
                             $location.path('/app/map');
                         })
