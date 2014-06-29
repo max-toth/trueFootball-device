@@ -42,7 +42,6 @@
 		BD55E57D166F4337963FA5A4 /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF8FA97E0294664B9F79F09 /* UIWebViewExtension.m */; };
 		DB35BBA94BA14C979D0447EC /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4ED679FD494D6A9F454DAC /* CDVLogger.m */; };
 		593F9B0540654FB49FFB3D80 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = C414897BEBC940068194458A /* CDVDevice.m */; };
-		E5AA7737C57949D2AEDDCBE4 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF879E09D544D51800F7D26 /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,8 +114,6 @@
 		AA3C698E25A042369E869C02 /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		C414897BEBC940068194458A /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "org.apache.cordova.device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		B1920B2C18E74A089FEC5A7E /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		CDF879E09D544D51800F7D26 /* CDVStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVStatusBar.m"; path = "org.apache.cordova.statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		7D8C30C7CBA342029569D6E6 /* CDVStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVStatusBar.h"; path = "org.apache.cordova.statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,8 +242,6 @@
 				AA3C698E25A042369E869C02 /* CDVLogger.h */,
 				C414897BEBC940068194458A /* CDVDevice.m */,
 				B1920B2C18E74A089FEC5A7E /* CDVDevice.h */,
-				CDF879E09D544D51800F7D26 /* CDVStatusBar.m */,
-				7D8C30C7CBA342029569D6E6 /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = "SportsSeeker/Plugins";
@@ -445,7 +440,6 @@
 				BD55E57D166F4337963FA5A4 /* UIWebViewExtension.m in Sources */,
 				DB35BBA94BA14C979D0447EC /* CDVLogger.m in Sources */,
 				593F9B0540654FB49FFB3D80 /* CDVDevice.m in Sources */,
-				E5AA7737C57949D2AEDDCBE4 /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
