@@ -8,11 +8,10 @@
 var fs = require('fs'),
     path = require('path');
 
-
 function setConfigProperty(filename, propertyName, value) {
     var data = fs.readFileSync(filename, 'utf8');
 
-    var result = data.replace(new RegExp(propertyName +  ": +'[^']*'"), propertyName + ": '" + value + "'");
+    var result = data.replace(new RegExp(propertyName +  ": +'[^']*'", 'g'), propertyName + ": '" + value + "'");
 
     fs.writeFileSync(filename, result, 'utf8');
 }
@@ -22,15 +21,15 @@ var root = process.argv[2];
 if (root) {
     var filesToReplace = [
         // android
-        "platforms/android/assets/www/js/app.js",
+        "platforms/android/assets/www/js/services.js",
         // ios
-        "platforms/ios/www/js/app.js"
+        "platforms/ios/www/js/services.js"
     ];
 
     filesToReplace.forEach(function(filename) {
         var fullFilename = path.join(root, filename);
 
-        if (fs.existsSync(fullFilename)) {        
+        if (fs.existsSync(fullFilename)) {
             // setConfigProperty(fullFilename, 'apiUrl', 'http://truefootbal.ngrok.com');
             setConfigProperty(fullFilename, 'apiUrl', 'http://sport-seeker.herokuapp.com/');
         } else {
