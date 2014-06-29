@@ -1,0 +1,40 @@
+objc[22043]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-06-29 11:31:02.959 SportsSeeker[22043:70b] Cannot find executable for CFBundle 0xa631c20 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-06-29 11:31:02.968 SportsSeeker[22043:70b] Cannot find executable for CFBundle 0xa52b820 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-06-29 11:31:03.022 SportsSeeker[22043:70b] Multi-tasking -> Device: YES, App: YES
+2014-06-29 11:31:03.031 SportsSeeker[22043:70b] Unlimited access to network resources
+2014-06-29 11:31:03.053 SportsSeeker[22043:70b] [CDVTimer][keyboard] 0.092983ms
+2014-06-29 11:31:03.080 SportsSeeker[22043:70b] [CDVTimer][statusbar] 26.126981ms
+2014-06-29 11:31:03.081 SportsSeeker[22043:70b] [CDVTimer][TotalPluginStartup] 27.437985ms
+2014-06-29 11:31:03.215 SportsSeeker[22043:70b] Resetting plugins due to page load.
+2014-06-29 11:31:03.600 SportsSeeker[22043:70b] Finished load of: file:///Users/lemming/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/338BA02A-58CE-4FBA-A800-B534C1E2A691/SportsSeeker.app/www/index.html#/app/map
+objc[23627]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-06-29 11:37:23.249 SportsSeeker[23627:70b] Cannot find executable for CFBundle 0xa410210 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-06-29 11:37:23.258 SportsSeeker[23627:70b] Cannot find executable for CFBundle 0xa6325d0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-06-29 11:37:23.432 SportsSeeker[23627:70b] Multi-tasking -> Device: YES, App: YES
+2014-06-29 11:37:23.442 SportsSeeker[23627:70b] Unlimited access to network resources
+2014-06-29 11:37:23.470 SportsSeeker[23627:70b] [CDVTimer][keyboard] 0.101030ms
+2014-06-29 11:37:23.513 SportsSeeker[23627:70b] [CDVTimer][statusbar] 42.914987ms
+2014-06-29 11:37:23.514 SportsSeeker[23627:70b] [CDVTimer][TotalPluginStartup] 44.170022ms
+2014-06-29 11:37:23.796 SportsSeeker[23627:70b] Resetting plugins due to page load.
+2014-06-29 11:37:24.000 SportsSeeker[23627:70b] Finished load of: file:///Users/lemming/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/338BA02A-58CE-4FBA-A800-B534C1E2A691/SportsSeeker.app/www/index.html#/app/map
+objc[25189]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-06-29 11:42:04.861 SportsSeeker[25189:70b] Cannot find executable for CFBundle 0xa560ce0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-06-29 11:42:04.869 SportsSeeker[25189:70b] Cannot find executable for CFBundle 0xa43bd60 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-06-29 11:42:04.916 SportsSeeker[25189:70b] Multi-tasking -> Device: YES, App: YES
+2014-06-29 11:42:04.925 SportsSeeker[25189:70b] Unlimited access to network resources
+2014-06-29 11:42:04.977 SportsSeeker[25189:70b] [CDVTimer][keyboard] 0.146985ms
+2014-06-29 11:42:04.991 SportsSeeker[25189:70b] [CDVTimer][statusbar] 13.200998ms
+2014-06-29 11:42:04.991 SportsSeeker[25189:70b] [CDVTimer][TotalPluginStartup] 14.474034ms
+2014-06-29 11:42:05.089 SportsSeeker[25189:70b] Resetting plugins due to page load.
+2014-06-29 11:42:05.272 SportsSeeker[25189:70b] Finished load of: file:///Users/lemming/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/338BA02A-58CE-4FBA-A800-B534C1E2A691/SportsSeeker.app/www/index.html#/app/map
+objc[26754]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-06-29 11:49:18.123 SportsSeeker[26754:70b] Cannot find executable for CFBundle 0xa41a2c0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-06-29 11:49:18.147 SportsSeeker[26754:70b] Cannot find executable for CFBundle 0xa337ca0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-06-29 11:49:18.244 SportsSeeker[26754:70b] Multi-tasking -> Device: YES, App: YES
+2014-06-29 11:49:18.253 SportsSeeker[26754:70b] Unlimited access to network resources
+2014-06-29 11:49:18.276 SportsSeeker[26754:70b] [CDVTimer][keyboard] 0.097036ms
+2014-06-29 11:49:18.329 SportsSeeker[26754:70b] [CDVTimer][statusbar] 53.077996ms
+2014-06-29 11:49:18.330 SportsSeeker[26754:70b] [CDVTimer][TotalPluginStartup] 54.279983ms
+2014-06-29 11:49:18.685 SportsSeeker[26754:70b] Resetting plugins due to page load.
+2014-06-29 11:49:18.938 SportsSeeker[26754:70b] Finished load of: file:///Users/lemming/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/338BA02A-58CE-4FBA-A800-B534C1E2A691/SportsSeeker.app/www/index.html#/app/map

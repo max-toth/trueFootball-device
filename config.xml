@@ -14,7 +14,8 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#FAE6C9" />
-    <!-- Don't store local date in an iCloud backup. Turn this to "cloud" to enable storage 
+    <preference name="StatusBarStyle" value="default" />
+    <!-- Don't store local date in an iCloud backup. Turn this to "cloud" to enable storage
          to be sent to iCloud. Note: enabling this could result in Apple rejecting your app.
     -->
     <preference name="BackupWebStorage" value="none" />

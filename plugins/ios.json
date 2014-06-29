@@ -25,7 +25,7 @@
                             "count": 1
                         },
                         {
-                            "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
+                            "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"false\" />",
                             "count": 1
                         },
                         {
