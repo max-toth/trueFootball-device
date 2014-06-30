@@ -12,7 +12,6 @@ angular.module('starter.services', [])
                             deferred.resolve(data.uid);
                             localStorage.setItem('uid', data.uid);
                         }).error(function (message) {
-                            console.log(message);
                             deferred.reject(message);
                         });
                     }
@@ -40,4 +39,4 @@ angular.module('starter.services', [])
         {title: 'Брейк-данс', value: 5},
         {title: 'Boarding', value: 6},
         {title: 'Волейбол', value: 7}
-    ])
+    ]);

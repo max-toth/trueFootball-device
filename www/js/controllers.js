@@ -53,6 +53,7 @@ angular.module('starter.controllers', ['yaMap'])
                 var BalloonContentLayout = templateLayoutFactory.get('templateOne');
                 BalloonContentLayout.superclass.build.call(this);
 //                А затем выполняем дополнительные действия.
+
                 angular.element(document.getElementById('joinButton')).bind('click', this.joinEventClick);
             },
 
@@ -86,6 +87,11 @@ angular.module('starter.controllers', ['yaMap'])
 
                         if (document.getElementById('joinButton').getAttribute('data-event-id') == event.id)
                             document.getElementById('eventCapacity').innerHTML = event.count + '/' + event.capacity;
+                        for (var i = 0; i < $scope.geoObjects.length; i++) {
+                            if ($scope.geoObjects[i].properties.event.id == event.id) {
+                                $scope.geoObjects[i].properties.event = event;
+                            }
+                        }
                     })
                     .error(function (message) {
                         $ionicPopup.alert({
