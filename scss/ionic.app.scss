@@ -129,6 +129,10 @@ $menu-bar-border: darken($menu-bar-bg, 15%);
 
 /*** APP MODULES ***/
 
+.off {
+  opacity: .4;
+}
+
 /** Map **/
 .map {
 	display: block;

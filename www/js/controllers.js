@@ -1,12 +1,23 @@
-var map;
-
 angular.module('starter.controllers', ['yaMap'])
-    .controller('AppCtrl', function ($scope) {
-        $scope.afterMapInit = function (_map) {
-            map = _map;
+    .controller('AppCtrl', function ($scope, sharedData, Sports) {
+        $scope.search = sharedData.search;
+        $scope.sports = Sports;
+
+        $scope.isOff = function (item) {
+            return !~sharedData.search.sports.indexOf(item);
+        };
+
+        $scope.toggleFilter = function (sport) {
+            var index = sharedData.search.sports.indexOf(sport);
+
+            if (index == -1) {
+                sharedData.search.sports.push(sport);
+            } else {
+                sharedData.search.sports.splice(index, 1);
+            }
         };
     })
-    .value('sharedData', { eventToOpen: null })
+    .value('sharedData', { eventToOpen: null, search: { sports: [] } })
     .controller('MapController', function (
             $scope, $http, $timeout,
             $ionicPopup,
@@ -18,7 +29,9 @@ angular.module('starter.controllers', ['yaMap'])
         DataService.get('uid').then(function (data) {
             _uid = data;
         });
+
         $scope.geoObjects = [];
+        $scope.search = sharedData.search;
 
         $http.get(Config.apiUrl + '/events').success(function (data) {
             angular.forEach(data, function (event) {
