@@ -32,11 +32,11 @@ angular.module('starter.services', [])
     })
 
     .constant('Sports', [
-        {title: 'Футбол', value: 1, icon: 'ion-ios7-football'},
-        {title: 'Хоккей', value: 2, icon: 'ion-steam'},
-        {title: 'Баскетбол', value: 3, icon: 'ion-ios7-basketball'},
-        {title: 'Bikes', value: 4, icon: 'ion-model-s'},
-        {title: 'Брейк-данс', value: 5, icon: 'ion-woman'},
-        {title: 'Boarding', value: 6, icon: 'ion-ios7-pulse'},
-        {title: 'Волейбол', value: 7, icon: 'ion-social-dribbble-outline'}
+        {title: 'Футбол', value: 1},
+        {title: 'Хоккей', value: 2},
+        {title: 'Баскетбол', value: 3},
+        {title: 'Bikes', value: 4},
+        {title: 'Брейк-данс', value: 5},
+        {title: 'Boarding', value: 6},
+        {title: 'Волейбол', value: 7}
     ]);

@@ -12,6 +12,7 @@
       <h1 class="title">ЭКШНС</h1>
     </header>
     <ion-content class="has-header">
+      <ion-list>
         <ion-item nav-clear menu-close href="#/app/events">
 			<i class="icon ion-plus-round"></i> Добавить
         </ion-item>
@@ -20,15 +21,6 @@
         </ion-item>
         <ion-toggle toggle-class="toggle-balanced" ng-repeat="sport in sports" ng-model="sport.checked">{{sport.title}}</ion-toggle>
       </ion-list>
-
-        <div class="row">
-            <div class="col">
-                <button ng-repeat="sport in sports"
-                        ng-class="{'off': !sport.checked}"
-                        ng-click="sport.checked = !sport.checked"
-                        class="button button-balanced icon {{sport.icon}}"></button>
-            </div>
-        </div>
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
