@@ -2,20 +2,6 @@ angular.module('starter.controllers', ['yaMap'])
     .controller('AppCtrl', function ($scope, sharedData, Sports) {
         $scope.search = sharedData.search;
         $scope.sports = Sports;
-
-        $scope.isOff = function (item) {
-            return !~sharedData.search.sports.indexOf(item);
-        };
-
-        $scope.toggleFilter = function (sport) {
-            var index = sharedData.search.sports.indexOf(sport);
-
-            if (index == -1) {
-                sharedData.search.sports.push(sport);
-            } else {
-                sharedData.search.sports.splice(index, 1);
-            }
-        };
     })
     .value('sharedData', { eventToOpen: null, search: { sports: [] } })
     .controller('MapController', function (

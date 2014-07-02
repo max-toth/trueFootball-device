@@ -1,12 +1,23 @@
-var map;
-
 angular.module('starter.controllers', ['yaMap'])
-    .controller('AppCtrl', function ($scope) {
-        $scope.afterMapInit = function (_map) {
-            map = _map;
+    .controller('AppCtrl', function ($scope, sharedData, Sports) {
+        $scope.search = sharedData.search;
+        $scope.sports = Sports;
+
+        $scope.isOff = function (item) {
+            return !~sharedData.search.sports.indexOf(item);
+        };
+
+        $scope.toggleFilter = function (sport) {
+            var index = sharedData.search.sports.indexOf(sport);
+
+            if (index == -1) {
+                sharedData.search.sports.push(sport);
+            } else {
+                sharedData.search.sports.splice(index, 1);
+            }
         };
     })
-    .value('sharedData', { eventToOpen: null })
+    .value('sharedData', { eventToOpen: null, search: { sports: [] } })
     .controller('MapController', function (
             $scope, $http, $timeout,
             $ionicPopup,
@@ -18,7 +29,9 @@ angular.module('starter.controllers', ['yaMap'])
         DataService.get('uid').then(function (data) {
             _uid = data;
         });
+
         $scope.geoObjects = [];
+        $scope.search = sharedData.search;
 
         $http.get(Config.apiUrl + '/events').success(function (data) {
             angular.forEach(data, function (event) {
@@ -53,6 +66,7 @@ angular.module('starter.controllers', ['yaMap'])
                 var BalloonContentLayout = templateLayoutFactory.get('templateOne');
                 BalloonContentLayout.superclass.build.call(this);
 //                А затем выполняем дополнительные действия.
+
                 angular.element(document.getElementById('joinButton')).bind('click', this.joinEventClick);
             },
 
@@ -86,6 +100,11 @@ angular.module('starter.controllers', ['yaMap'])
 
                         if (document.getElementById('joinButton').getAttribute('data-event-id') == event.id)
                             document.getElementById('eventCapacity').innerHTML = event.count + '/' + event.capacity;
+                        for (var i = 0; i < $scope.geoObjects.length; i++) {
+                            if ($scope.geoObjects[i].properties.event.id == event.id) {
+                                $scope.geoObjects[i].properties.event = event;
+                            }
+                        }
                     })
                     .error(function (message) {
                         $ionicPopup.alert({

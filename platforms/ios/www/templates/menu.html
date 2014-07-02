@@ -19,6 +19,15 @@
 			<i class="icon ion-arrow-right-b"></i> Игры
         </ion-item>
       </ion-list>
+
+        <div class="row">
+            <div class="col">
+                <button ng-repeat="sport in sports"
+                        ng-class="{'off': isOff(sport.value)}"
+                        ng-click="toggleFilter(sport.value)"
+                        class="button button-balanced icon {{sport.icon}}"></button>
+            </div>
+        </div>
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
